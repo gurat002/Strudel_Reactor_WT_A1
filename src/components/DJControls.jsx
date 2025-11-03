@@ -1,9 +1,20 @@
-function DJControls() {
+import React, { useState, useEffect } from "react";
+
+export default function DJControls({ tempo, onTempoChange }) {
+  const [bpm, setBpm] = useState(tempo || 140); // set initial tempo input field
+
+  const handleTempoInput = (e) => {
+    const newBpm = Number(e.target.value); // convert input to number
+    setBpm(newBpm);
+    if (onTempoChange) onTempoChange(newBpm); // update tempo
+  };
+
     return (
     <>
         <div className="input-group mb-3">
-        <span className="input-group-text" id="basic-addon1">setCPM</span>
-        <input type="text" className="form-control" placeholder="120" aria-label="set cpm" aria-describedby="cpm_label" id="cpm_input" />
+        <span className="input-group-text" id="basic-addon1">setBPM</span>
+        <input type="number" value={bpm} className="form-control" placeholder="120" aria-label="set bpm" aria-describedby="bpm_label" id="bpm_input"
+        onChange={handleTempoInput}/>
         </div>
 
 
@@ -31,5 +42,3 @@ function DJControls() {
     </>
     )
 }
-
-export default DJControls;
