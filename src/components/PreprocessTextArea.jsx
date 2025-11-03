@@ -1,10 +1,8 @@
-function PreprocessTextArea() {
+function PreprocessTextArea( {defaultValue, onChange} ) {
     return (
     <>
-        <div className="btn-group" role="group">
-            <label htmlFor="exampleFormControlTextarea1" className="form-label">Text to preprocess:</label>
-            <textarea className="form-control" rows="15" id="proc" ></textarea>
-        </div>
+        <label htmlFor="exampleFormControlTextarea1" className="form-label">Text to preprocess:</label>
+        <textarea className="form-control" rows="15" defaultValue={defaultValue} onChange={onChange} id="proc" ></textarea>
     </>
     )
 }
