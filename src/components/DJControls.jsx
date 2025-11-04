@@ -1,25 +1,18 @@
-import React, { useState, useEffect } from "react";
 
-export default function DJControls({ tempo, onTempoChange }) {
-  const [bpm, setBpm] = useState(tempo || 140); // set initial tempo input field
-
-  const handleTempoInput = (e) => {
-    const newBpm = Number(e.target.value); // convert input to number
-    setBpm(newBpm);
-    if (onTempoChange) onTempoChange(newBpm); // update tempo
-  };
+const DJControls = ({ volume, onVolumeChange, bpm, onTempoChange }) => {
 
     return (
     <>
         <div className="input-group mb-3">
         <span className="input-group-text" id="basic-addon1">setBPM</span>
-        <input type="number" value={bpm} className="form-control" placeholder="120" aria-label="set bpm" aria-describedby="bpm_label" id="bpm_input"
-        onChange={handleTempoInput}/>
+        <input type="number" value={bpm} className="form-control" placeholder="140" aria-label="set bpm" aria-describedby="bpm_label" id="bpm_input"
+        onChange={(e) => onTempoChange(Number(e.target.value))}/>
         </div>
 
 
         <label htmlFor="volume_range" className="form-label">Volume</label>
-        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range"></input>
+        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume}
+        onChange={(e) => onVolumeChange(Number(e.target.value))}/>
 
         <div className="form-check">
             <input className="form-check-input" type="checkbox" value="" id="s1" />
@@ -42,3 +35,5 @@ export default function DJControls({ tempo, onTempoChange }) {
     </>
     )
 }
+
+export default DJControls;

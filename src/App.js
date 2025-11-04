@@ -55,17 +55,10 @@ export default function StrudelDemo() {
 
     const hasRun = useRef(false);
     const [tempo, setTempo] = useState(140); // set tempo to default 140
-
-    const handlePlay = () => {
-        globalEditor.evaluate()
-        console.log(globalEditor);
-    }
-
-    const handleStop = () => {
-        globalEditor.stop()
-    }
-
+    const [masterVolume, setMasterVolume] = useState(1.0);
     const [songText, setSongText] = useState(stranger_tune)
+
+
 
     useState(() => {
 
@@ -104,34 +97,57 @@ export default function StrudelDemo() {
                         await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                     },
                 });
-                
-            document.getElementById('proc').value = stranger_tune
-            // SetupButtons()
-            // Proc()
-        }
-        globalEditor.setCode(songText)
-    }, [songText]);
 
-    // applies changed tempo
+        }
+    }, []);
+    
+
     useEffect(() => {
-        // check that Strudel has loaded
-        const checkReady = setInterval(() => {
-        if (globalEditor?.repl?.evaluate) {
-            clearInterval(checkReady); // clear if loaded/ready
+        // Do not do anything until initialization is complete
+        const editorInstance = globalEditor;
+            if (!editorInstance) return;
+                editorInstance.setCode(songText);
+                editorInstance.repl.evaluate(songText);
 
-            // def helper method to change tempo
-            globalEditor.__setTempo = (bpm) => {
-            const cps = bpm / 60 / 4; // // takes a BPM value and converts it to CPS which is what strudel uses
-            globalEditor.repl.evaluate(`setcps(${cps})`);
-            };
+        }, [songText, masterVolume]);
 
-            globalEditor.__setTempo(tempo); // set tempo
+            // runs only when masterVolume changes
+        useEffect(() => {
+            const editorInstance = globalEditor;
+            if (!editorInstance) return;
+
+            // apply gain to every playing pattern
+            const volumeCommand = `all(x => x.gain(${masterVolume}))`;
+            editorInstance.repl.evaluate(volumeCommand);
+
+        }, [masterVolume]); // run only when the volume changes
+
+        // run only when the tempo state changes
+        useEffect(() => {
+            const editorInstance = globalEditor;
+
+            // Convert bpm to cps
+            const cps = tempo / 60 / 4;
+
+            // Send to REPL
+            editorInstance.repl.evaluate(`setcps(${cps})`);
+
+        }, [tempo]);
+
+    const handlePlay = () => {
+        const editorInstance = globalEditor;
+        if (editorInstance) {
+
+            editorInstance.repl.evaluate(songText);
         }
-        }, 250); // check if ready every 250 milliseconds
+    };
 
-        return () => clearInterval(checkReady); // stop to prevent duplicate timers
-    }, [tempo]);
-
+    const handleStop = () => {
+        const editorInstance = globalEditor;
+        if (editorInstance) {
+            editorInstance.stop();
+        }
+    };
 
     return (
         <div>
@@ -161,10 +177,12 @@ export default function StrudelDemo() {
                         </div>
                         <div className="col-md-4">
                     <DJControls
-                    tempo={tempo}
-                    onTempoChange={(newBpm) => {
-                        setTempo(newBpm);
-                    }}
+                        tempo={tempo}
+                        onTempoChange={(newBpm) => {
+                            setTempo(newBpm);
+                        }}
+                        volume={masterVolume}
+                        onVolumeChange={setMasterVolume}
                     />
                         </div>
                     </div>
