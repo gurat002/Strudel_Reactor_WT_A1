@@ -108,50 +108,44 @@ export default function StrudelDemo() {
 
     useEffect(() => {
         // Do not do anything until initialization is complete
-        const editorInstance = globalEditor;
-            if (!editorInstance) return;
-                editorInstance.setCode(songText);
-                editorInstance.repl.evaluate(songText);
+            if (!globalEditor) return;
+                globalEditor.setCode(songText);
+                globalEditor.repl.evaluate(songText);
 
         }, [songText, masterVolume]);
 
             // runs only when masterVolume changes
         useEffect(() => {
-            const editorInstance = globalEditor;
-            if (!editorInstance) return;
+            if (!globalEditor) return;
 
             // apply gain to every playing pattern
             const volumeCommand = `all(x => x.gain(${masterVolume}))`;
-            editorInstance.repl.evaluate(volumeCommand);
+            globalEditor.repl.evaluate(volumeCommand);
 
         }, [masterVolume]); // run only when the volume changes
 
         // run only when the tempo state changes
         useEffect(() => {
-            const editorInstance = globalEditor;
-
             // Convert bpm to cps
             const cps = tempo / 60 / 4;
 
             // Send to REPL
-            editorInstance.repl.evaluate(`setcps(${cps})`);
+            globalEditor.repl.evaluate(`setcps(${cps})`);
 
         }, [tempo]);
 
     const handlePlay = () => {
-        const editorInstance = globalEditor;
-        if (editorInstance) {
+        if (globalEditor) {
 
-            editorInstance.repl.evaluate(songText);
+            globalEditor.repl.evaluate(songText);
             setIsPlaying(true);
             initAudioOnFirstClick();
         }
     };
 
     const handleStop = () => {
-        const editorInstance = globalEditor;
-        if (editorInstance) {
-            editorInstance.stop();
+        if (globalEditor) {
+            globalEditor.stop();
             setIsPlaying(false);
         }
     };
