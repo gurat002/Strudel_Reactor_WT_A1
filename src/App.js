@@ -1,4 +1,4 @@
-import './App.css';
+import './css/App.css';
 import { useEffect, useRef, useState } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
 import { evalScope } from '@strudel/core';
@@ -10,9 +10,12 @@ import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import DJControls from './components/DJControls'
-import PlayButtons from './components/PlayButtons'
 import ProcessButtons from './components/ProcessButtons'
 import PreprocessTextArea from './components/PreprocessTextArea'
+import VolumeSlider from './components/VolumeSlider'
+import Dock from './components/Dock'
+import { VscDebugRestart , VscPlay } from "react-icons/vsc";
+
 
 
 let globalEditor = null;
@@ -149,31 +152,42 @@ export default function StrudelDemo() {
         }
     };
 
+    // Create items list to be put into dock (taskbar)
+    const items = [
+        { icon: <VscDebugRestart  size={18} />, label: 'Restart', onClick: () => alert('Restart') },
+        { icon: <VscPlay size={18} />, label: 'Play', onClick: () => handlePlay },
+        { icon: <VolumeSlider volume={masterVolume} onVolumeChange={setMasterVolume} />, },
+    ];
+    
     return (
-        <div>
+        <div className="row">
             <h2>Strudel Demo</h2>
             <main>
 
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                        <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
 
                             <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
                         </div>
+
+                        <div className="col-md-6" style={{ maxHeight: '40vh', overflowY: 'auto' }}>
+                            <label className="form-label">Output Text:</label>
+                            <div id="editor" />
+                            
+                            {/* <div id="output" /> */}
+                        </div>
+                    </div>
+                    
+                    <div className="row">
+
                         <div className="col-md-4">
 
                             <nav>
                                 <ProcessButtons />
                                 <br />
-                                <PlayButtons onPlay={handlePlay} onStop={handleStop}/>
 
                             </nav>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                            <div id="editor" />
-                            <div id="output" />
                         </div>
                         <div className="col-md-4">
                     <DJControls
@@ -181,14 +195,19 @@ export default function StrudelDemo() {
                         onTempoChange={(newBpm) => {
                             setTempo(newBpm);
                         }}
-                        volume={masterVolume}
-                        onVolumeChange={setMasterVolume}
                     />
                         </div>
+                    <Dock 
+                        items={items}
+                        panelHeight={68}
+                        baseItemSize={50}
+                        magnification={65}
+                    />
                     </div>
                 </div>
                 <canvas id="roll"></canvas>
             </main >
+            
         </div >
     );
 

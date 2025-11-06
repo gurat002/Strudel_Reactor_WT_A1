@@ -1,4 +1,4 @@
-function PlayButtons( {onPlay, onStop} ) {
+function PlaybackControls( {onPlay, onStop} ) {
     return (
     <>
         <div className="btn-group" role="group">
@@ -9,4 +9,4 @@ function PlayButtons( {onPlay, onStop} ) {
     )
 }
 
-export default PlayButtons;
+export default PlaybackControls;

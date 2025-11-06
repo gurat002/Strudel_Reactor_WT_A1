@@ -1,5 +1,5 @@
 
-const DJControls = ({ volume, onVolumeChange, bpm, onTempoChange }) => {
+const DJControls = ({ bpm, onTempoChange }) => {
 
     return (
     <>
@@ -8,11 +8,6 @@ const DJControls = ({ volume, onVolumeChange, bpm, onTempoChange }) => {
         <input type="number" value={bpm} className="form-control" placeholder="140" aria-label="set bpm" aria-describedby="bpm_label" id="bpm_input"
         onChange={(e) => onTempoChange(Number(e.target.value))}/>
         </div>
-
-
-        <label htmlFor="volume_range" className="form-label">Volume</label>
-        <input type="range" className="form-range" min="0" max="1" step="0.01" id="volume_range" value={volume}
-        onChange={(e) => onVolumeChange(Number(e.target.value))}/>
 
         <div className="form-check">
             <input className="form-check-input" type="checkbox" value="" id="s1" />
