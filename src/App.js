@@ -14,7 +14,7 @@ import ProcessButtons from './components/ProcessButtons'
 import PreprocessTextArea from './components/PreprocessTextArea'
 import VolumeSlider from './components/VolumeSlider'
 import Dock from './components/Dock'
-import { VscDebugRestart , VscPlay } from "react-icons/vsc";
+import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
 
 
 
@@ -60,6 +60,7 @@ export default function StrudelDemo() {
     const [tempo, setTempo] = useState(140); // set tempo to default 140
     const [masterVolume, setMasterVolume] = useState(1.0);
     const [songText, setSongText] = useState(stranger_tune)
+    const [isPlaying, setIsPlaying] = useState(false);
 
 
 
@@ -89,7 +90,7 @@ export default function StrudelDemo() {
                     drawTime,
                     onDraw: (haps, time) => drawPianoroll({ haps, time, ctx: drawContext, drawTime, fold: 0 }),
                     prebake: async () => {
-                        initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
+                        // initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
                         const loadModules = evalScope(
                             import('@strudel/core'),
                             import('@strudel/draw'),
@@ -142,6 +143,8 @@ export default function StrudelDemo() {
         if (editorInstance) {
 
             editorInstance.repl.evaluate(songText);
+            setIsPlaying(true);
+            initAudioOnFirstClick();
         }
     };
 
@@ -149,13 +152,17 @@ export default function StrudelDemo() {
         const editorInstance = globalEditor;
         if (editorInstance) {
             editorInstance.stop();
+            setIsPlaying(false);
         }
     };
 
     // Create items list to be put into dock (taskbar)
     const items = [
         { icon: <VscDebugRestart  size={18} />, label: 'Restart', onClick: () => alert('Restart') },
-        { icon: <VscPlay size={18} />, label: 'Play', onClick: () => handlePlay },
+        // { icon: <VscPlay size={18} />, label: 'Play', onClick: () => handlePlay },
+        isPlaying
+            ? { icon: <VscDebugStop size={22} />, label: 'Stop', onClick: handleStop }
+            : { icon: <VscPlay size={22} />, label: 'Play', onClick: handlePlay },
         { icon: <VolumeSlider volume={masterVolume} onVolumeChange={setMasterVolume} />, },
     ];
     
