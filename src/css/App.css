@@ -36,3 +36,95 @@
     transform: rotate(360deg);
   }
 }
+header {
+  background-color: black ;
+  color: rgb(239 68 68);
+  padding: 18px;
+}
+
+header .h3 {
+    font-size: 20px !important;
+}
+
+.music-icon {
+  height: 30px;
+  width: 30px;
+}
+
+
+main {
+  background: black;
+}
+
+
+
+.instrument-btn {
+  width: 125px;
+  height: 125px;
+  font-size: 20px;;
+  background-color: rgb(239 68 68);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  
+}
+
+
+.instrument-btn:hover {
+opacity: 90%;
+  
+}
+
+.col-md-6 {
+  &::-webkit-scrollbar {
+          display: none;
+          width: 0; /* Ensures no space is reserved for the scrollbar */
+          height: 0;
+      }
+}
+
+
+.form-container-top {
+    border: 2px solid rgba(55, 65, 81, 1);
+    background-color: #10151C !important;
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
+    height: 30px;
+}
+
+
+.form-label {
+  font-size: 12px;
+  padding: 0px 15px;
+  font-weight: 500;
+  color: rgb(239 68 68);
+  text-shadow: 0 0 1px rgb(239 68 68);
+  
+}
+
+.form-control, .ͼ1 .cm-scroller {
+  padding: 10px;
+  color: #D1D5DB !important;
+  background-color: #10151C !important;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', 'Courier New', monospace;
+  font-size: 12px !important;
+  resize: none;
+  border: 2px solid #374151 !important;
+  border-radius: 0px !important;
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  border-top: 0px !important;
+
+      &::-webkit-scrollbar {
+          display: none;
+          width: 0; /* Ensures no space is reserved for the scrollbar */
+          height: 0;
+      }
+} 
+
+.col-lg-5 .form-control {
+  top: 15px;
+  position: relative;
+  border: 2px solid #374151 !important;
+  border-radius: 10px !important;
+}

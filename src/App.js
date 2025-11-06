@@ -14,7 +14,7 @@ import ProcessButtons from './components/ProcessButtons'
 import PreprocessTextArea from './components/PreprocessTextArea'
 import VolumeSlider from './components/VolumeSlider'
 import Dock from './components/Dock'
-import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
+import { VscDebugRestart , VscPlay, VscDebugStop, VscMusic } from "react-icons/vsc";
 
 
 
@@ -167,25 +167,62 @@ export default function StrudelDemo() {
     ];
     
     return (
-        <div className="row">
-            <h2>Strudel Demo</h2>
-            <main>
+    <>
+        <header className="d-flex justify-content-between align-items-center py-3">
+            <div className="d-flex align-items-center">
+                <VscMusic className="music-icon"/>&nbsp;&nbsp;&nbsp;
+                <h1 className="h3 fw-bold mb-0">Strudel Demo</h1>
+            </div>
+        </header>
 
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+            <main classname="flex-grow-1">
+                <div className="row g-3 h-100">
 
-                            <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
-                        </div>
+                    <div className="col-lg-7 d-flex flex-column">
+                            <div className="row g-3"> 
 
-                        <div className="col-md-6" style={{ maxHeight: '40vh', overflowY: 'auto' }}>
-                            <label className="form-label">Output Text:</label>
-                            <div id="editor" />
+                            <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                                <div className="card-custom h-100 p-3 d-flex flex-column">
+                                    <div className="form-container">
+                                        <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
+                                    </div>
+                                </div>
+                            </div>
                             
-                            {/* <div id="output" /> */}
+
+                            
+                            <div className="col-md-6" style={{ maxHeight: '49vh', overflowY: 'auto' }}>
+                                <div className="card-custom h-100 p-3 d-flex flex-column">
+                                        <div className="form-container-top">
+                                            <label htmlFor="editor" className="form-label mb-2">Output:</label>
+                                        </div>
+                                    <div className="form-container">
+
+                                    <div id="editor"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    
+                <div className="col-lg-5 d-flex flex-column">
+                    <div className="form-control">
+                        <div className="card-custom p-3 mb-3">
+                            <h2 className="form-label">Instrument Mutes</h2>
+                            <div className="row g-5">
+                                <div className="col-3"><button className="instrument-btn">Bassline</button></div>
+                                <div className="col-3"><button className="instrument-btn">Main Arp</button></div>
+                                <div className="col-3"><button className="instrument-btn">...</button></div>
+                                <div className="col-3"><button className="instrument-btn">...</button></div>
+                                <div className="col-3"><button className="instrument-btn">Kick</button></div>
+                                <div className="col-3"><button className="instrument-btn">HiHat</button></div>
+                                <div className="col-3"><button className="instrument-btn">Clap</button></div>
+                                <div className="col-3"><button className="instrument-btn">Other</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
                     <div className="row">
 
                         <div className="col-md-4">
@@ -211,11 +248,11 @@ export default function StrudelDemo() {
                         magnification={65}
                     />
                     </div>
-                </div>
                 <canvas id="roll"></canvas>
             </main >
             
-        </div >
+
+        </>
     );
 
 
