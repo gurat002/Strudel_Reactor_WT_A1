@@ -10,11 +10,12 @@ import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import DJControls from './components/DJControls'
-import PlaybackControls from './components/PlaybackControls'
 import ProcessButtons from './components/ProcessButtons'
 import PreprocessTextArea from './components/PreprocessTextArea'
-import PlayerBar from './components/PlayerBar'
 import VolumeSlider from './components/VolumeSlider'
+import Dock from './components/Dock'
+import { VscDebugRestart , VscPlay } from "react-icons/vsc";
+
 
 
 let globalEditor = null;
@@ -151,6 +152,13 @@ export default function StrudelDemo() {
         }
     };
 
+    // Create items list to be put into dock (taskbar)
+    const items = [
+        { icon: <VscDebugRestart  size={18} />, label: 'Restart', onClick: () => alert('Restart') },
+        { icon: <VscPlay size={18} />, label: 'Play', onClick: () => handlePlay },
+        { icon: <VolumeSlider volume={masterVolume} onVolumeChange={setMasterVolume} />, },
+    ];
+    
     return (
         <div className="row">
             <h2>Strudel Demo</h2>
@@ -188,13 +196,13 @@ export default function StrudelDemo() {
                             setTempo(newBpm);
                         }}
                     />
-                    <PlayerBar
-                        onPlay={handlePlay}
-                        onStop={handleStop}
-                        volume={masterVolume}
-                        onVolumeChange={setMasterVolume}
-                    />
                         </div>
+                    <Dock 
+                        items={items}
+                        panelHeight={68}
+                        baseItemSize={50}
+                        magnification={65}
+                    />
                     </div>
                 </div>
                 <canvas id="roll"></canvas>
