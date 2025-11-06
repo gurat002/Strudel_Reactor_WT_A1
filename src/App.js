@@ -88,7 +88,7 @@ export default function StrudelDemo() {
                     transpiler,
                     root: document.getElementById('editor'),
                     drawTime,
-                    onDraw: (haps, time) => drawPianoroll({ haps, time, ctx: drawContext, drawTime, fold: 0 }),
+                    onDraw: (haps, time) => drawPianoroll({ haps, time, ctx: drawContext, drawTime, fold: 0,}),
                     prebake: async () => {
                         // initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
                         const loadModules = evalScope(
@@ -175,14 +175,14 @@ export default function StrudelDemo() {
             </div>
         </header>
 
-            <main classname="flex-grow-1">
-                <div className="row g-3 h-100">
+            <main>
+                <div className="row g-4">
 
                     <div className="col-lg-7 d-flex flex-column">
-                            <div className="row g-3"> 
+                            <div className="row g-0"> 
 
-                            <div className="col-md-6" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
-                                <div className="card-custom h-100 p-3 d-flex flex-column">
+                            <div className="col-md-6" style={{overflowY: 'auto' }}>
+                                <div className="card-custom p-2 d-flex flex-column">
                                     <div className="form-container">
                                         <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
                                     </div>
@@ -191,8 +191,8 @@ export default function StrudelDemo() {
                             
 
                             
-                            <div className="col-md-6" style={{ maxHeight: '49vh', overflowY: 'auto' }}>
-                                <div className="card-custom h-100 p-3 d-flex flex-column">
+                            <div className="col-md-6" style={{overflowY: 'auto' }}>
+                                <div className="card-custom p-2 d-flex flex-column">
                                         <div className="form-container-top">
                                             <label htmlFor="editor" className="form-label mb-2">Output:</label>
                                         </div>
@@ -204,11 +204,11 @@ export default function StrudelDemo() {
                             </div>
                         </div>
                     </div>
-                <div className="col-lg-5 d-flex flex-column">
+                <div className="col-lg-5 d-flex">
                     <div className="form-control">
                         <div className="card-custom p-3 mb-3">
                             <h2 className="form-label">Instrument Mutes</h2>
-                            <div className="row g-5">
+                            <div className="row gx-2 gy-5">
                                 <div className="col-3"><button className="instrument-btn">Bassline</button></div>
                                 <div className="col-3"><button className="instrument-btn">Main Arp</button></div>
                                 <div className="col-3"><button className="instrument-btn">...</button></div>
@@ -219,12 +219,44 @@ export default function StrudelDemo() {
                                 <div className="col-3"><button className="instrument-btn">Other</button></div>
                             </div>
                         </div>
+
+                    </div>
+
                     </div>
                 </div>
+
+                <div className="row g-4">
+                    <div className="col-lg-7 d-flex flex-column">
+                    <canvas id="roll"></canvas>
                 </div>
+                <div className="col-lg-5 d-flex flex-column">
+                    <div className="row g-0"> 
+                        <div className="slider-card p-0 mb-3">
+                            <div className="reverb-card">
+                                <div className="form-control">
+
+                                    <h2 className="form-label">Reverb</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="slider-card p-0 mb-3">
+                            <div className="panning-card">
+                                <div className="form-control">
+
+                                    <h2 className="form-label">panning</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+                    
+                
+
+
 
                     <div className="row">
-
+            
                         <div className="col-md-4">
 
                             <nav>
@@ -248,7 +280,7 @@ export default function StrudelDemo() {
                         magnification={65}
                     />
                     </div>
-                <canvas id="roll"></canvas>
+                
             </main >
             
 
