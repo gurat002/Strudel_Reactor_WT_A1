@@ -17,6 +17,8 @@ import Dock from './components/Dock'
 import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
 import { TbMultiplier2X, TbMultiplier05X } from "react-icons/tb"
 import Header from './components/Header.jsx'
+import MidiPad from './components/MidiPad.jsx'
+
 
 
 let globalEditor = null;
@@ -202,7 +204,9 @@ export default function StrudelDemo() {
                         </div>
                     </div>
                 <div className="col-lg-5 d-flex">
-                    <div className="form-control">
+                    <MidiPad/>
+
+                    {/* <div className="form-control">
                         <div className="card-custom p-3 mb-3">
                             <h2 className="form-label">Instrument Mutes</h2>
                             <div className="row gx-2 gy-5">
@@ -217,7 +221,7 @@ export default function StrudelDemo() {
                             </div>
                         </div>
 
-                    </div>
+                    </div> */}
 
                     </div>
                 </div>
