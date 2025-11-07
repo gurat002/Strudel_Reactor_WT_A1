@@ -18,8 +18,7 @@ import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
 import { TbMultiplier2X, TbMultiplier05X } from "react-icons/tb"
 import Header from './components/Header.jsx'
 import MidiPad from './components/MidiPad.jsx'
-
-
+import CodeInputOutputCard from './components/CodeInputOutputCard.jsx'
 
 let globalEditor = null;
 
@@ -178,51 +177,10 @@ export default function StrudelDemo() {
                 <div className="row g-4">
 
                     <div className="col-lg-7 d-flex flex-column">
-                            <div className="row g-0"> 
-
-                            <div className="col-md-6" style={{overflowY: 'auto' }}>
-                                <div className="card-custom p-2 d-flex flex-column">
-                                    <div className="form-container">
-                                        <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                            
-                            <div className="col-md-6" style={{overflowY: 'auto' }}>
-                                <div className="card-custom p-2 d-flex flex-column">
-                                        <div className="form-container-top">
-                                            <label htmlFor="editor" className="form-label mb-2">Output:</label>
-                                        </div>
-                                    <div className="form-container">
-
-                                    <div id="editor"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <CodeInputOutputCard songText={songText} setSongText={setSongText}/>
                     </div>
                 <div className="col-lg-5 d-flex">
                     <MidiPad/>
-
-                    {/* <div className="form-control">
-                        <div className="card-custom p-3 mb-3">
-                            <h2 className="form-label">Instrument Mutes</h2>
-                            <div className="row gx-2 gy-5">
-                                <div className="col-3"><button className="instrument-btn">Bassline</button></div>
-                                <div className="col-3"><button className="instrument-btn">Main Arp</button></div>
-                                <div className="col-3"><button className="instrument-btn">...</button></div>
-                                <div className="col-3"><button className="instrument-btn">...</button></div>
-                                <div className="col-3"><button className="instrument-btn">Kick</button></div>
-                                <div className="col-3"><button className="instrument-btn">HiHat</button></div>
-                                <div className="col-3"><button className="instrument-btn">Clap</button></div>
-                                <div className="col-3"><button className="instrument-btn">Other</button></div>
-                            </div>
-                        </div>
-
-                    </div> */}
-
                     </div>
                 </div>
 
