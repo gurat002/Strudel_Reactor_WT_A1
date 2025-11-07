@@ -14,8 +14,9 @@ import ProcessButtons from './components/ProcessButtons'
 import PreprocessTextArea from './components/PreprocessTextArea'
 import VolumeSlider from './components/VolumeSlider'
 import Dock from './components/Dock'
-import { VscDebugRestart , VscPlay, VscDebugStop, VscMusic } from "react-icons/vsc";
-
+import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
+import { TbMultiplier2X, TbMultiplier05X } from "react-icons/tb"
+import Header from './components/Header.jsx'
 
 
 let globalEditor = null;
@@ -108,10 +109,11 @@ export default function StrudelDemo() {
 
     useEffect(() => {
         // Do not do anything until initialization is complete
-        const editorInstance = globalEditor;
-            if (!editorInstance) return;
-                editorInstance.setCode(songText);
-                editorInstance.repl.evaluate(songText);
+            if (!globalEditor) return;
+
+                // set the REPL text
+                globalEditor.setCode(songText);
+                globalEditor.repl.evaluate(songText);
 
         }, [songText, masterVolume]);
 
@@ -158,22 +160,22 @@ export default function StrudelDemo() {
 
     // Create items list to be put into dock (taskbar)
     const items = [
-        { icon: <VscDebugRestart  size={18} />, label: 'Restart', onClick: () => alert('Restart') },
+
+        { icon: <VscDebugRestart  size={24} />, label: 'Restart', onClick: () => alert('Restart') },
+                { icon: <TbMultiplier05X   size={24} />, label: '0.5x', onClick: () => setTempo(tempo/2) },
+
         // { icon: <VscPlay size={18} />, label: 'Play', onClick: () => handlePlay },
         isPlaying
             ? { icon: <VscDebugStop size={22} />, label: 'Stop', onClick: handleStop }
             : { icon: <VscPlay size={22} />, label: 'Play', onClick: handlePlay },
+        { icon: <TbMultiplier2X   size={24} />, label: '2x', onClick: () => setTempo(tempo*2) },
+
         { icon: <VolumeSlider volume={masterVolume} onVolumeChange={setMasterVolume} />, },
     ];
     
     return (
     <>
-        <header className="d-flex justify-content-between align-items-center py-3">
-            <div className="d-flex align-items-center">
-                <VscMusic className="music-icon"/>&nbsp;&nbsp;&nbsp;
-                <h1 className="h3 fw-bold mb-0">Strudel Demo</h1>
-            </div>
-        </header>
+        <Header/>
 
             <main>
                 <div className="row g-4">
@@ -226,8 +228,17 @@ export default function StrudelDemo() {
                 </div>
 
                 <div className="row g-4">
-                    <div className="col-lg-7 d-flex flex-column">
+                    <div className="col-lg-4 d-flex flex-column">
                     <canvas id="roll"></canvas>
+
+                </div>
+                <div className="col-lg-3 d-flex flex-column">
+                    <DJControls
+                        tempo={tempo}
+                        onTempoChange={(newBpm) => {
+                            setTempo(newBpm);
+                        }}
+                    />
                 </div>
                 <div className="col-lg-5 d-flex flex-column">
                     <div className="row g-0"> 
@@ -243,7 +254,7 @@ export default function StrudelDemo() {
                             <div className="panning-card">
                                 <div className="form-control">
 
-                                    <h2 className="form-label">panning</h2>
+                                    <h2 className="form-label">Panning</h2>
                                 </div>
                             </div>
                         </div>
@@ -266,21 +277,15 @@ export default function StrudelDemo() {
                             </nav>
                         </div>
                         <div className="col-md-4">
-                    <DJControls
-                        tempo={tempo}
-                        onTempoChange={(newBpm) => {
-                            setTempo(newBpm);
-                        }}
-                    />
+
                         </div>
+                    </div>
                     <Dock 
                         items={items}
                         panelHeight={68}
                         baseItemSize={50}
                         magnification={65}
                     />
-                    </div>
-                
             </main >
             
 

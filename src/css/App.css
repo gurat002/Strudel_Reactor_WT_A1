@@ -36,20 +36,6 @@
     transform: rotate(360deg);
   }
 }
-header {
-  background-color: black ;
-  color: rgb(239 68 68);
-  padding: 18px;
-}
-
-header .h3 {
-    font-size: 20px !important;
-}
-
-.music-icon {
-  height: 30px;
-  width: 30px;
-}
 
 
 main {
@@ -79,9 +65,8 @@ main {
   font-size: 12px;
   padding: 0px 15px;
   font-weight: 500;
-  color: rgb(239 68 68);
-  text-shadow: 0 0 1px rgb(239 68 68);
-  
+  color: var(--accent-color);
+  transition: color 0.3s ease;
 }
 
 .form-control, .ͼ1 .cm-scroller {
@@ -122,7 +107,8 @@ main {
   width: 125px;
   height: 125px;
   font-size: 20px;;
-  background-color: rgb(239 68 68);
+  background-color: var(--accent-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
   color: white;
   border: none;
   border-radius: 8px;
@@ -146,7 +132,13 @@ opacity: 90%;
 .slider-card .form-control {
   height: 100px;
   max-height: 100px !important;
-  color: green;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
   position: relative;
   top: -25px;
 }
+
+.input-group-text {
+    color: var(--accent-color) !important;
+}
+
