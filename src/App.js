@@ -17,7 +17,9 @@ import Dock from './components/Dock'
 import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
 import { TbMultiplier2X, TbMultiplier05X } from "react-icons/tb"
 import Header from './components/Header.jsx'
-
+import MidiPad from './components/MidiPad.jsx'
+import CodeInputOutputCard from './components/CodeInputOutputCard.jsx'
+import SliderCard from './components/SliderCard';
 
 let globalEditor = null;
 
@@ -171,59 +173,18 @@ export default function StrudelDemo() {
     return (
     <>
         <Header/>
-
-            <main>
-                <div className="row g-4">
-
-                    <div className="col-lg-7 d-flex flex-column">
-                            <div className="row g-0"> 
-
-                            <div className="col-md-6" style={{overflowY: 'auto' }}>
-                                <div className="card-custom p-2 d-flex flex-column">
-                                    <div className="form-container">
-                                        <PreprocessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)}/>
-                                    </div>
-                                </div>
-                            </div>
-                            
-
-                            
-                            <div className="col-md-6" style={{overflowY: 'auto' }}>
-                                <div className="card-custom p-2 d-flex flex-column">
-                                        <div className="form-container-top">
-                                            <label htmlFor="editor" className="form-label mb-2">Output:</label>
-                                        </div>
-                                    <div className="form-container">
-
-                                    <div id="editor"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <div className="col-lg-5 d-flex">
-                    <div className="form-control">
-                        <div className="card-custom p-3 mb-3">
-                            <h2 className="form-label">Instrument Mutes</h2>
-                            <div className="row gx-2 gy-5">
-                                <div className="col-3"><button className="instrument-btn">Bassline</button></div>
-                                <div className="col-3"><button className="instrument-btn">Main Arp</button></div>
-                                <div className="col-3"><button className="instrument-btn">...</button></div>
-                                <div className="col-3"><button className="instrument-btn">...</button></div>
-                                <div className="col-3"><button className="instrument-btn">Kick</button></div>
-                                <div className="col-3"><button className="instrument-btn">HiHat</button></div>
-                                <div className="col-3"><button className="instrument-btn">Clap</button></div>
-                                <div className="col-3"><button className="instrument-btn">Other</button></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    </div>
+        <main>
+            <div className="row g-4">
+                <div className="col-lg-7 d-flex flex-column">
+                    <CodeInputOutputCard songText={songText} setSongText={setSongText}/>
                 </div>
+                <div className="col-lg-5 d-flex">
+                    <MidiPad/>
+                </div>
+            </div>
 
-                <div className="row g-4">
-                    <div className="col-lg-4 d-flex flex-column">
+            <div className="row g-4">
+                <div className="col-lg-4 d-flex flex-column">
                     <canvas id="roll"></canvas>
 
                 </div>
@@ -236,7 +197,9 @@ export default function StrudelDemo() {
                     />
                 </div>
                 <div className="col-lg-5 d-flex flex-column">
-                    <div className="row g-0"> 
+                    <SliderCard/>
+
+                    {/* <div className="row g-0"> 
                         <div className="slider-card p-0 mb-3">
                             <div className="reverb-card">
                                 <div className="form-control">
@@ -253,35 +216,35 @@ export default function StrudelDemo() {
                                 </div>
                             </div>
                         </div>
+                    </div> */}
+                </div>
+            </div>
+                
+            
+
+
+
+                <div className="row">
+        
+                    <div className="col-md-4">
+
+                        <nav>
+                            <ProcessButtons />
+                            <br />
+
+                        </nav>
+                    </div>
+                    <div className="col-md-4">
+
                     </div>
                 </div>
-</div>
-                    
-                
-
-
-
-                    <div className="row">
-            
-                        <div className="col-md-4">
-
-                            <nav>
-                                <ProcessButtons />
-                                <br />
-
-                            </nav>
-                        </div>
-                        <div className="col-md-4">
-
-                        </div>
-                    </div>
-                    <Dock 
-                        items={items}
-                        panelHeight={68}
-                        baseItemSize={50}
-                        magnification={65}
-                    />
-            </main >
+                <Dock 
+                    items={items}
+                    panelHeight={68}
+                    baseItemSize={50}
+                    magnification={65}
+                />
+        </main >
             
 
         </>
