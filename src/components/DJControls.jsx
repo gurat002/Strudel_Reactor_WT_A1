@@ -1,3 +1,8 @@
+import '../css/DJControls.css';
+import './ThemeSwitcher.jsx';
+import '../css/App.css';
+
+
 
 const DJControls = ({ bpm, onTempoChange }) => {
 

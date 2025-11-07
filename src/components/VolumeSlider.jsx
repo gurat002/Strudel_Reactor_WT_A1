@@ -18,8 +18,6 @@ const VolumeSlider = ({ volume, onVolumeChange, }) => {
         }
     }, [volume]);
 
-
-
     return (
     <>
         <input ref={sliderRef} type="range" className="volume-slider" min="0" max="1" step="0.01" id="volume_range" value={volume}

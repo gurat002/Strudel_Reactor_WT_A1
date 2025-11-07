@@ -1,0 +1,19 @@
+.flex {
+    height: 40px !important;
+    background-color: #10151C !important;
+    border: 2px solid rgba(55, 65, 81, 1);
+    border-radius: 10px;
+    color: green !important;
+    line-height: 20px;
+    text-align: center;
+}
+
+button {
+    background: transparent;
+    border: 0px;
+}
+
+.selected {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
