@@ -19,6 +19,7 @@ import { TbMultiplier2X, TbMultiplier05X } from "react-icons/tb"
 import Header from './components/Header.jsx'
 import MidiPad from './components/MidiPad.jsx'
 import CodeInputOutputCard from './components/CodeInputOutputCard.jsx'
+import SliderCard from './components/SliderCard';
 
 let globalEditor = null;
 
@@ -172,20 +173,18 @@ export default function StrudelDemo() {
     return (
     <>
         <Header/>
-
-            <main>
-                <div className="row g-4">
-
-                    <div className="col-lg-7 d-flex flex-column">
-                        <CodeInputOutputCard songText={songText} setSongText={setSongText}/>
-                    </div>
+        <main>
+            <div className="row g-4">
+                <div className="col-lg-7 d-flex flex-column">
+                    <CodeInputOutputCard songText={songText} setSongText={setSongText}/>
+                </div>
                 <div className="col-lg-5 d-flex">
                     <MidiPad/>
-                    </div>
                 </div>
+            </div>
 
-                <div className="row g-4">
-                    <div className="col-lg-4 d-flex flex-column">
+            <div className="row g-4">
+                <div className="col-lg-4 d-flex flex-column">
                     <canvas id="roll"></canvas>
 
                 </div>
@@ -198,7 +197,9 @@ export default function StrudelDemo() {
                     />
                 </div>
                 <div className="col-lg-5 d-flex flex-column">
-                    <div className="row g-0"> 
+                    <SliderCard/>
+
+                    {/* <div className="row g-0"> 
                         <div className="slider-card p-0 mb-3">
                             <div className="reverb-card">
                                 <div className="form-control">
@@ -215,35 +216,35 @@ export default function StrudelDemo() {
                                 </div>
                             </div>
                         </div>
+                    </div> */}
+                </div>
+            </div>
+                
+            
+
+
+
+                <div className="row">
+        
+                    <div className="col-md-4">
+
+                        <nav>
+                            <ProcessButtons />
+                            <br />
+
+                        </nav>
+                    </div>
+                    <div className="col-md-4">
+
                     </div>
                 </div>
-</div>
-                    
-                
-
-
-
-                    <div className="row">
-            
-                        <div className="col-md-4">
-
-                            <nav>
-                                <ProcessButtons />
-                                <br />
-
-                            </nav>
-                        </div>
-                        <div className="col-md-4">
-
-                        </div>
-                    </div>
-                    <Dock 
-                        items={items}
-                        panelHeight={68}
-                        baseItemSize={50}
-                        magnification={65}
-                    />
-            </main >
+                <Dock 
+                    items={items}
+                    panelHeight={68}
+                    baseItemSize={50}
+                    magnification={65}
+                />
+        </main >
             
 
         </>
