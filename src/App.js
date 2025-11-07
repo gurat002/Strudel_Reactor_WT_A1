@@ -20,6 +20,7 @@ import Header from './components/Header.jsx'
 import MidiPad from './components/MidiPad.jsx'
 import CodeInputOutputCard from './components/CodeInputOutputCard.jsx'
 import SliderCard from './components/SliderCard';
+import Visualiser from './components/Visualiser';
 
 let globalEditor = null;
 
@@ -184,10 +185,17 @@ export default function StrudelDemo() {
             </div>
 
             <div className="row g-4">
-                <div className="col-lg-4 d-flex flex-column">
+                <div className="col-lg-7 d-flex flex-column">
+                    <Visualiser/>
                     <canvas id="roll"></canvas>
 
                 </div>
+
+                <div className="col-lg-5 d-flex flex-column">
+                    <SliderCard/>
+                </div>
+            </div>
+
                 <div className="col-lg-3 d-flex flex-column">
                     <DJControls
                         tempo={tempo}
@@ -196,29 +204,6 @@ export default function StrudelDemo() {
                         }}
                     />
                 </div>
-                <div className="col-lg-5 d-flex flex-column">
-                    <SliderCard/>
-
-                    {/* <div className="row g-0"> 
-                        <div className="slider-card p-0 mb-3">
-                            <div className="reverb-card">
-                                <div className="form-control">
-
-                                    <h2 className="form-label">Reverb</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="slider-card p-0 mb-3">
-                            <div className="panning-card">
-                                <div className="form-control">
-
-                                    <h2 className="form-label">Panning</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
-                </div>
-            </div>
                 
             
 
