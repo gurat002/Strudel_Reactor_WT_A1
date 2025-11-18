@@ -24,6 +24,6 @@
 }
 
 .volume-slider:hover::-webkit-slider-thumb {
-    background-color: #1db954;
+    background-color: var(--accent-color);
     opacity: 100%;
 }

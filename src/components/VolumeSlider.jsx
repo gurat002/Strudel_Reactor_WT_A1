@@ -14,7 +14,7 @@ const VolumeSlider = ({ volume, onVolumeChange, }) => {
             const percentage = ((volume - slider.min) / (slider.max - slider.min)) * 100; // calculate slider percentage
 
             // apply linear gradient background for fill effect
-            slider.style.background = `linear-gradient(to right, #1db954 ${percentage}%, #4d4d4d ${percentage}%)`;
+            slider.style.background = `linear-gradient(to right, var(--accent-color) ${percentage}%, #4d4d4d ${percentage}%)`;
         }
     }, [volume]);
 

@@ -4,8 +4,44 @@
   transition: color 0.3s ease;
   position: relative;
   top: 0;
+
+  
 }
 
 .input-group-text {
     color: var(--accent-color) !important;
+}
+
+.slider-card .form-label {
+  justify-content: center;
+  position: relative;
+  bottom: 20%;
+  right: 30%;
+}
+
+.slider {
+  width: 90% !important;
+  align-items: center;
+  position: relative;
+  left: 5%;
+  height: 5px;
+  appearance: none;
+  background: #4d4d4d; /* Default color */
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: 0%;
+}
+
+.slider:hover::-webkit-slider-thumb {
+    background-color: var(--accent-color);;
+    opacity: 100%;
 }

@@ -63,6 +63,8 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
     const [tempo, setTempo] = useState(140); // set tempo to default 140
     const [masterVolume, setMasterVolume] = useState(1.0);
+    const [reverb, setReverb] = useState(0.5);
+
     const [songText, setSongText] = useState(stranger_tune)
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -117,9 +119,12 @@ export default function StrudelDemo() {
 
                 // set the REPL text
                 globalEditor.setCode(songText);
+                if (isPlaying == true) {
+                    globalEditor.repl.evaluate(songText);
+                }
+            console.log('setting repl')
 
-
-        }, [songText, masterVolume]);
+        }, [songText, masterVolume, reverb]);
 
             // runs only when masterVolume changes
         useEffect(() => {
@@ -128,8 +133,19 @@ export default function StrudelDemo() {
             // apply gain to every playing pattern
             const volumeCommand = `all(x => x.gain(${masterVolume}))`;
             globalEditor.repl.evaluate(volumeCommand);
+            console.log('evaluating volume' + volumeCommand)
 
         }, [masterVolume]); // run only when the volume changes
+
+        useEffect(() => {
+            if (!globalEditor) return;
+
+            // apply gain to every playing pattern
+            const reverbCommand = `all(x => x.room(${reverb}))`;
+            globalEditor.repl.evaluate(reverbCommand);
+
+        }, [reverb]); // run only when the volume changes
+
 
         // run only when the tempo state changes
         useEffect(() => {
@@ -193,7 +209,8 @@ export default function StrudelDemo() {
                 </div>
 
                 <div className="col-lg-5 d-flex flex-column">
-                    <SliderCard/>
+                    <SliderCard
+                    reverb={reverb} onReverbChange={setReverb} />
                 </div>
             </div>
 
