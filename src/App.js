@@ -63,7 +63,8 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
     const [tempo, setTempo] = useState(140); // set tempo to default 140
     const [masterVolume, setMasterVolume] = useState(1.0);
-    const [reverb, setReverb] = useState(0.5);
+    const [reverb, setReverb] = useState(0);
+    const [panning, setPanning] = useState(0.5);
 
     const [songText, setSongText] = useState(stranger_tune)
     const [isPlaying, setIsPlaying] = useState(false);
@@ -124,9 +125,9 @@ export default function StrudelDemo() {
                 }
             console.log('setting repl')
 
-        }, [songText, masterVolume, reverb]);
+        }, [songText, masterVolume, reverb, panning]);
 
-            // runs only when masterVolume changes
+        // Detect masterVolume and change
         useEffect(() => {
             if (!globalEditor) return;
 
@@ -137,14 +138,26 @@ export default function StrudelDemo() {
 
         }, [masterVolume]); // run only when the volume changes
 
+        // Detect reverb and change  
         useEffect(() => {
             if (!globalEditor) return;
 
-            // apply gain to every playing pattern
+            // apply reverb to every playing pattern
             const reverbCommand = `all(x => x.room(${reverb}))`;
             globalEditor.repl.evaluate(reverbCommand);
 
-        }, [reverb]); // run only when the volume changes
+        }, [reverb]); // run only when the reverb changes
+
+        // Detect panning and change
+        useEffect(() => {
+            if (!globalEditor) return;
+
+            // apply panning to every playing pattern
+            const panningCommand = `all(x => x.pan(${panning}))`;
+            console.log('pan:' + panningCommand);            
+            globalEditor.repl.evaluate(panningCommand);
+
+        }, [panning]); // run only when the panning changes
 
 
         // run only when the tempo state changes
@@ -210,7 +223,7 @@ export default function StrudelDemo() {
 
                 <div className="col-lg-5 d-flex flex-column">
                     <SliderCard
-                    reverb={reverb} onReverbChange={setReverb} />
+                    reverb={reverb} onReverbChange={setReverb} panning={panning} onPannningChange={setPanning} />
                 </div>
             </div>
 

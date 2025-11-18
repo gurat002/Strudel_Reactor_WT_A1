@@ -42,6 +42,7 @@
 }
 
 .slider:hover::-webkit-slider-thumb {
-    background-color: var(--accent-color);;
+    background-color: var(--accent-color);
     opacity: 100%;
 }
+
