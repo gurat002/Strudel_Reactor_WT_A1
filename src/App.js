@@ -94,7 +94,7 @@ export default function StrudelDemo() {
                     drawTime,
                     onDraw: (haps, time) => drawPianoroll({ haps, time, ctx: drawContext, drawTime, fold: 0,}),
                     prebake: async () => {
-                        // initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
+                        initAudioOnFirstClick(); // needed to make the browser happy (don't await this here..)
                         const loadModules = evalScope(
                             import('@strudel/core'),
                             import('@strudel/draw'),
@@ -108,7 +108,8 @@ export default function StrudelDemo() {
 
         }
     }, []);
-    
+
+
 
     useEffect(() => {
         // Do not do anything until initialization is complete
@@ -116,7 +117,7 @@ export default function StrudelDemo() {
 
                 // set the REPL text
                 globalEditor.setCode(songText);
-                globalEditor.repl.evaluate(songText);
+
 
         }, [songText, masterVolume]);
 
@@ -160,7 +161,7 @@ export default function StrudelDemo() {
     const items = [
 
         { icon: <VscDebugRestart  size={24} />, label: 'Restart', onClick: () => alert('Restart') },
-                { icon: <TbMultiplier05X   size={24} />, label: '0.5x', onClick: () => setTempo(tempo/2) },
+        { icon: <TbMultiplier05X   size={24} />, label: '0.5x', onClick: () => setTempo(tempo/2) },
 
         // { icon: <VscPlay size={18} />, label: 'Play', onClick: () => handlePlay },
         isPlaying
@@ -180,7 +181,7 @@ export default function StrudelDemo() {
                     <CodeInputOutputCard songText={songText} setSongText={setSongText}/>
                 </div>
                 <div className="col-lg-5 d-flex">
-                    <MidiPad/>
+                    <MidiPad globalEditor={globalEditor}/>
                 </div>
             </div>
 
@@ -204,11 +205,6 @@ export default function StrudelDemo() {
                         }}
                     />
                 </div>
-                
-            
-
-
-
                 <div className="row">
         
                     <div className="col-md-4">

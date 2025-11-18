@@ -1,17 +1,19 @@
-.visualiser {
+.visualiser-card {
   height: 10px;
   max-height: 50px;
   color: var(--accent-color);
   transition: color 0.3s ease;
   position: relative;
   top: 0;
+  width: 98.3%;
+  
 }
 
 .visualiser-card .form-control {
     position: relative;
     right: -7px;
     height: 115px;
-    width: 862px;
+    width:100%;
     border: 2px solid rgba(55, 65, 81, 1) !important;
     border-top-left-radius: 10px !important;
     border-top-right-radius: 10px !important;

@@ -5,7 +5,7 @@ function Visualiser( ) {
     return (
     <>
         <div className="row g-0 p-0"> 
-            <div className="visualiser mb-3">
+            <div className="visualiser mb-3 ">
                 <div className="visualiser-card">
                     <div className="form-control">
 
