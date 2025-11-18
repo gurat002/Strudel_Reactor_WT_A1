@@ -1,5 +1,5 @@
 
-import { ThemeSwitcher } from './ThemeSwitcher.jsx'
+import { ThemeSwitcher } from './Controls/ThemeSwitcher.jsx'
 import { VscMusic } from "react-icons/vsc";
 import '../css/Header.css';
 import { useEffect, useRef, useState } from "react";

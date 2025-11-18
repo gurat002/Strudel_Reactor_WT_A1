@@ -1,4 +1,4 @@
-import { stranger_tune } from '../tunes';
+import { stranger_tune } from '../../tunes';
 import { useState, useEffect } from "react";
 
 

@@ -1,4 +1,4 @@
-import '../css/PreprocessTextArea.css';
+import '../../css/PreprocessTextArea.css';
 
 function PreprocessTextArea( {defaultValue, onChange} ) {
     return (

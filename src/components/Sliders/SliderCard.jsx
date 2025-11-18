@@ -1,4 +1,4 @@
-import '../css/SliderCard.css';
+import '../../css/SliderCard.css';
 import React, { useRef, useEffect } from 'react';
 
 

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import '../css/VolumeSlider.css';
+import '../../css/VolumeSlider.css';
 
 
 const VolumeSlider = ({ volume, onVolumeChange, }) => {

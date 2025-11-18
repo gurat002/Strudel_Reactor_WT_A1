@@ -1,6 +1,6 @@
-import '../css/DJControls.css';
+import '../../css/DJControls.css';
 import './ThemeSwitcher.jsx';
-import '../css/App.css';
+import '../../css/App.css';
 
 
 

@@ -9,17 +9,16 @@ import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/w
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
-import DJControls from './components/DJControls'
+import DJControls from './components/Controls/DJControls'
 import ProcessButtons from './components/ProcessButtons'
-import PreprocessTextArea from './components/PreprocessTextArea'
-import VolumeSlider from './components/VolumeSlider'
-import Dock from './components/Dock'
+import VolumeSlider from './components/Sliders/VolumeSlider'
+import Dock from './components/Controls/Dock'
 import { VscDebugRestart , VscPlay, VscDebugStop } from "react-icons/vsc";
 import { TbMultiplier2X, TbMultiplier05X } from "react-icons/tb"
 import Header from './components/Header.jsx'
-import MidiPad from './components/MidiPad.jsx'
-import CodeInputOutputCard from './components/CodeInputOutputCard.jsx'
-import SliderCard from './components/SliderCard';
+import MidiPad from './components/Controls/MidiPad.jsx'
+import CodeInputOutputCard from './components/Editors/CodeInputOutputCard.jsx'
+import SliderCard from './components/Sliders/SliderCard';
 import Visualiser from './components/Visualiser';
 
 let globalEditor = null;

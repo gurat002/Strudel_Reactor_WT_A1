@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/ThemeSwitcher.css';
+import '../../css/ThemeSwitcher.css';
 import {VscCircleLargeFilled } from "react-icons/vsc";
 
 export const ThemeSwitcher = ({ colors, activeColor, setActiveColor }) => {
