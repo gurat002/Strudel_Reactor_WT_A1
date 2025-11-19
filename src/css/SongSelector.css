@@ -1,0 +1,49 @@
+
+
+    .form-control .card-custom h2 {
+        position: relative;
+        bottom: 50%;
+    }
+
+
+    .song-selector-theme .accordion-item {
+    background-color: #10151C !important;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    position: relative;
+    top: 70px;
+    box-shadow: none;
+    }
+
+
+    .song-selector-theme .accordion-button {
+    background-color: #10151C !important;
+    color: var(--accent-color);
+    box-shadow: none;
+    }
+
+
+    .song-selector-theme .accordion-button:not(.collapsed) {
+    color: var(--accent-color);
+    background-color: #10151C !important;
+    border-bottom: 1px solid #333;
+    box-shadow: none;
+    }
+
+
+    .song-selector-theme .accordion-button::after {
+    filter: invert(1);
+    
+    }
+
+
+    .btn-strudel {
+    background-color: #10151C !important;
+    color: white !important;
+    border: 2px solid white !important;
+    max-width: fit-content;
+    position: relative;
+    left: 37%;
+    }
+
+

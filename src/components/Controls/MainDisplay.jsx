@@ -9,6 +9,7 @@ import { stranger_tune } from "../../tunes";
 import Visualiser from "../Visualiser";
 import SliderCard from "../Sliders/SliderCard";
 import DJControls from "./DJControls";
+import SongSelector from "./SongSelector"
 
 export default function DockDisplayer({ globalEditor }) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -18,6 +19,8 @@ export default function DockDisplayer({ globalEditor }) {
 
     const [reverb, setReverb] = useState(0);
     const [panning, setPanning] = useState(0.5);
+
+    const [currentSong, setCurrentSong] = (stranger_tune)
 
         useEffect(() => {
         // Do not do anything until initialization is complete
@@ -71,7 +74,12 @@ export default function DockDisplayer({ globalEditor }) {
 
         }, [panning]); // run only when the panning changes
 
+        useEffect(() => {
+            if (!globalEditor) return;
 
+
+            setSongText(currentSong);
+        }, [currentSong])
 
 
     const handlePlay = () => {
@@ -114,7 +122,8 @@ export default function DockDisplayer({ globalEditor }) {
                     <CodeInputOutputCard songText={songText} setSongText={setSongText}/>
                 </div>
                 <div className="col-lg-5 d-flex">
-                    <MidiPad globalEditor={globalEditor}/>
+                    {/* <MidiPad globalEditor={globalEditor}/> */}
+                    <SongSelector currentSong={currentSong} onSongChange={setSongText} />
                 </div>
             </div>
             <div>
