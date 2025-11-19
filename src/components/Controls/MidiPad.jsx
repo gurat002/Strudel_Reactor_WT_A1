@@ -1,37 +1,36 @@
 import { stranger_tune } from '../../tunes';
 import { useState, useEffect } from "react";
 
+// function ToggleInstruments( {bassline, main_arp, drums, globalEditor} ) {
+// console.log(globalEditor)
+//     const PARTS = {
+//   "bassline:": "bassline",
+//   "main_arp:":"main_arp",
+//   "drums:": "drums"
+// };
+//         const states = { bassline, main_arp, drums };
+//         let output = stranger_tune;
 
-function ToggleInstruments( {bassline, main_arp, drums, globalEditor} ) {
-console.log(globalEditor)
-    const PARTS = {
-  "bassline:": "bassline",
-  "main_arp:":"main_arp",
-  "drums:": "drums"
-};
-        const states = { bassline, main_arp, drums };
-        let output = stranger_tune;
+//         for (const part in PARTS) {
+//             const key = PARTS[part]; 
+//             const isOn = states[key];
 
-        for (const part in PARTS) {
-            const key = PARTS[part]; 
-            const isOn = states[key];
-
-            if (isOn) {
-            // remove underscore if present
-            output = output.replace(`_${part}`, part);
-            } else {
-            // add underscore if missing
-            output = output.replace(part, `_${part}`);
-            }
-        }
+//             if (isOn) {
+//             // remove underscore if present
+//             output = output.replace(`_${part}`, part);
+//             } else {
+//             // add underscore if missing
+//             output = output.replace(part, `_${part}`);
+//             }
+//         }
 
             
-        if (globalEditor?.repl?.evaluate) {
-            console.log('reevaluating')
-            globalEditor.setCode(output)
-            globalEditor.repl.evaluate(output);
-    }
-    };
+//         if (globalEditor?.repl?.evaluate) {
+//             console.log('reevaluating')
+//             globalEditor.setCode(output)
+//             globalEditor.repl.evaluate(output);
+//     }
+//     };
 
     function MidiPad( {globalEditor} ) {
         const [bassline, setBassline] = useState(true);
@@ -39,8 +38,7 @@ console.log(globalEditor)
         const [drums, setDrums] = useState(true);
 
         useEffect(() => {
-            ToggleInstruments(bassline, main_arp, drums, globalEditor)
-            console.log('change registered')
+            // ToggleInstruments(bassline, main_arp, drums, globalEditor)
         }, [bassline, main_arp, drums]);
 
     return (

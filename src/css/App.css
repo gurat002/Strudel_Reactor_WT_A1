@@ -36,12 +36,7 @@
     transform: rotate(360deg);
   }
 }
-html, body, #root {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* prevents scrolling */
-}
+
 
 main {
   background: black;
@@ -124,6 +119,32 @@ main {
 .instrument-btn:hover {
 opacity: 90%;
   
+}
+
+.tempo-input {
+  position: relative;
+  bottom: 78%;
+  left: 1%;
+}
+
+.input-text, .form-input {
+    position: relative;
+    border: 2px solid #374151 !important;
+    border-radius: 10px !important;
+    color: var(--accent-color);
+    background-color: #10151C !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+
+}
+.input-text {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+
 }
 
 #roll {

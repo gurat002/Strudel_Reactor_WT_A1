@@ -8,7 +8,7 @@ import CodeInputOutputCard from "../Editors/CodeInputOutputCard";
 import { stranger_tune } from "../../tunes";
 import Visualiser from "../Visualiser";
 import SliderCard from "../Sliders/SliderCard";
-import DJControls from "./TempoController";
+import DJControls from "./DJControls";
 
 export default function DockDisplayer({ globalEditor }) {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -77,7 +77,7 @@ export default function DockDisplayer({ globalEditor }) {
     const handlePlay = () => {
         if (globalEditor) {
 
-            globalEditor.repl.evaluate(songText);
+            globalEditor.repl.evaluate(songText); // start
             setIsPlaying(true);
             // initAudioOnFirstClick();
         }
@@ -85,13 +85,13 @@ export default function DockDisplayer({ globalEditor }) {
 
     const handleStop = () => {
         if (globalEditor) {
-            globalEditor.stop();
+            globalEditor.stop(); // stop
             setIsPlaying(false);
         }
     };
 
     
-
+    // define item list that goes into the dock
     const items = useMemo(() => [
 
         { icon: <VscDebugRestart  size={24} />, label: 'Restart', onClick: () => alert('Restart') },
@@ -123,6 +123,8 @@ export default function DockDisplayer({ globalEditor }) {
                 <div className="col-lg-7 d-flex flex-column">
                     <Visualiser/>
                     <canvas id="roll"></canvas>
+                    <DJControls tempo={tempo} onTempoChange={setTempo}/>
+                    
 
                 </div>
 
@@ -137,6 +139,7 @@ export default function DockDisplayer({ globalEditor }) {
                 baseItemSize={50}
                 magnification={65}
             />
+
             </div>
         </>
 

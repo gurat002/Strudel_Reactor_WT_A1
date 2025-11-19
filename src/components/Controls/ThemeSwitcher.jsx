@@ -11,9 +11,11 @@ console.log(activeColor)
   return (
     <div className="flex items-center p-1">
       {colors.map((color) => (
+        // when button is clicked change theme
         <button key={color.name} onClick={() => setActiveColor(color)} className={` button-${colors[color.name]}`}
         aria-label={`Swap to ${color.name} theme`}
-        ><VscCircleLargeFilled size={25} style={{ border: activeColor.name === color.name ? "2px solid white" : "none",
+        // highlight selected color
+        ><VscCircleLargeFilled size={25} style={{ border: activeColor.name === color.name ? "2px solid white" : "none", 
           color: color.value, borderRadius: "50%", }} /></button>
       ))}
     </div>
