@@ -37,6 +37,14 @@
   }
 }
 
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* prevents scrolling */
+    background-color: black;
+
+}
 
 main {
   background: black;
@@ -87,7 +95,11 @@ main {
           width: 0; /* Ensures no space is reserved for the scrollbar */
           height: 0;
       }
-} 
+}
+
+.form-control:hover  {
+transform: translateY(-1px) !important;
+}
 
 
 .col-lg-5 .form-control {
@@ -99,32 +111,43 @@ main {
   max-height:375px;
 }
 
+.form-control:hover  {
+transform: translateY(-1px) !important;
+}
+
 .col-lg-7 .row {
   height: 400px;
 }
 
-.instrument-btn {
-  width: 115px;
-  height: 115px;
-  font-size: 20px;;
-  background-color: var(--accent-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0px 0px px var(--accent-color, 0.2); ;
+.tempo-input, .volume-input {
+  position: static;
 }
 
-
-.instrument-btn:hover {
-opacity: 90%;
-  
-}
 
 .tempo-input {
-  position: relative;
-  bottom: 78%;
-  left: 1%;
+  padding-bottom: 10px;
+  position: fixed;
+  bottom: 0;
+
+  left: calc(46% - 380px); 
+  
+  z-index: 999;
+  margin: 0 0.5rem;
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+}
+
+.volume-input {
+  left: calc(31% + 250px); 
+  
+  top: 20px;
+  position: fixed;
+  margin: 0 0.5rem;
+  display: flex;
+  max-width: 100%;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
 .input-text, .form-input {
@@ -150,8 +173,9 @@ opacity: 90%;
 #roll {
   transform: rotate(270deg);
   position: relative;
-  bottom: 60px;
-  right: 150px;
+  bottom: 100%;
+  left: 15%;
+  size-adjust: 50%;
 
 }
 

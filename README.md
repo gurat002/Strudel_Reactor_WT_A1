@@ -71,8 +71,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 
-### REFERENCES
+### What each of the controls do
+Theme Switcher: Switch to themes;
+    Red, blue, green, yellow, purple and white
+
+Text to preprocess: modify text then dynamically update the Strudel Mirror
+
+Select Song: select a song from 3 different options.
+    Stranger Tune: 
+    Coastline:
+    Hypnotic Electro:
+
+Visualiser:
+    Displays Piano Roll
+
+Reverb:
+Panning:
+
+Dock:
+    play: play and switches icon to stop
+    stop: stops and switches icon to play
+    2x: double the speed
+    0.5x: half the speed
+    restart: currently only alerts for now
+
+setBPM: set the bpm to a specific value
+
+
+
+
+### A link to your demonstration video.
+link
+
+### Any song code used from the Strudel.cc bakery (or any other source)
+    Stranger Tune: 
+        Found in https://www.youtube.com/watch?v=ZCcpWzhekEY by Stranger Dave
+    Coastline:
+        Found in https://strudel.cc/bakery/ 78185: coastline by eddyflux
+        and https://strudel.cc/?HQzKuqkdSa-K
+    Hypnotic Electro:
+        Found in https://strudel.cc/bakery/ 13294: strudel 1.1 demo by Anonymous
+        and https://strudel.cc/?8F2i3iUI0G6A
+
+
+### OTHER REFERENCESv
 Icon Library: https://react-icons.github.io/react-icons/
 Dock component and Dock css: https://reactbits.dev/components/dock
-
-

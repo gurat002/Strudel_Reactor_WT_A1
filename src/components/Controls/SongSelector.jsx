@@ -10,7 +10,7 @@ const SONG_LIBRARY = [
   {
     id: 'stranger_tune_id',
     title: 'Stranger Tune',
-    artist: 'Algorave Dave Remix',
+    artist: 'Algorave Dave',
     genre: 'Synth-Pop / Live Code',
     description: 'Features heavy supersaw basslines and complex drum structures.',
     code: stranger_tune // The actual code string from the file
@@ -25,7 +25,7 @@ const SONG_LIBRARY = [
   },
   {
     id: 'hypnotic_electro_id', // note the song didn't have a name so i just came up with this
-    title: 'hypnoticelectro',
+    title: 'Hypnotic Electro',
     artist: 'Anonymous',
     genre: 'Hypnotic / Driving',
     description: 'A fast paced driving hypnotic electro-ambient groove',
@@ -61,7 +61,7 @@ export default function SongSelector({ currentSong, onSongChange }) {
                 {SONG_LIBRARY.map((song) => {
                 const isSelected = currentSong === song.code;
                 const isOpen = openItemId === song.id;
-
+                
                 return (
                     <div 
                     key={song.id} 
@@ -80,7 +80,10 @@ export default function SongSelector({ currentSong, onSongChange }) {
                     <div className={`accordion-collapse collapse ${isOpen ? 'show' : ''}`}>
 
                         <div className="accordion-body">
-                        <p className="small mb-3">{song.description}</p>
+                          <p className="small mb-3">By: {song.artist}</p>
+                        <p className="small mb-3">Genre: {song.genre}
+                          <br/>
+                          Description: {song.description}</p>
                         
                         <button
                             className="btn btn-sm btn-strudel w-100"
@@ -90,14 +93,17 @@ export default function SongSelector({ currentSong, onSongChange }) {
                             {isSelected ? 'CURRENTLY PLAYING' : 'LOAD TRACK'}
                         </button>
                         </div>
+                        
                     </div>
                     </div>
                 );
                 })}
             </div>
-            </div>
-        </div>
-    </div>
             
+            </div>
+            
+        </div>
+        
+    </div>   
   );
 }

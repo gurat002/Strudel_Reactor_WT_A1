@@ -8,8 +8,8 @@ function Visualiser( ) {
             <div className="visualiser mb-3 ">
                 <div className="visualiser-card">
                     <div className="form-control">
-
                         <h2 className="form-label">Visualiser</h2>
+                        <canvas id="roll"></canvas>
                     </div>
                 </div>
             </div>

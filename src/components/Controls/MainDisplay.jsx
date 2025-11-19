@@ -35,9 +35,14 @@ export default function DockDisplayer({ globalEditor }) {
 
         }, [songText, masterVolume, reverb, panning]);
 
-        // Detect masterVolume and change
+        // Detect masterVolume and tempo and change
         useEffect(() => {
             if (!globalEditor) return;
+
+            if (masterVolume > 2) {
+                setMasterVolume(1);
+                alert("Volume Too High!")
+            }
 
             const cps = tempo / 60 / 4;
 
@@ -131,9 +136,7 @@ export default function DockDisplayer({ globalEditor }) {
             <div className="row g-4 " >
                 <div className="col-lg-7 d-flex flex-column">
                     <Visualiser/>
-                    <canvas id="roll"></canvas>
-                    <DJControls tempo={tempo} onTempoChange={setTempo}/>
-                    
+
 
                 </div>
 
@@ -141,13 +144,15 @@ export default function DockDisplayer({ globalEditor }) {
                     <SliderCard
                     reverb={reverb} onReverbChange={setReverb} panning={panning} onPannningChange={setPanning} />
                 </div>
+
             </div>
-            <Dock 
+                <Dock 
                 items={items}
                 panelHeight={68}
                 baseItemSize={50}
                 magnification={65}
             />
+                <DJControls tempo={tempo} onTempoChange={setTempo}/>    
 
             </div>
         </>

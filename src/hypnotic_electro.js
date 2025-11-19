@@ -6,11 +6,9 @@ $: note("<d d d a a# d3 f4>*15".sub(12))
   .ftype('ladder')
   .lpq(7).color('cyan')
   // .drive(3)
-  .distort("1.5:.7")
+  .distort("0.7:.4")
   ._scope()
-
 $: s("bd*5").bank('RolandTR909')
-._punchcard({height:16,labels:1})
 $_: s("hh*10").dec(.1).bank('RolandTR909').gain(sine.fast(4))
 ._punchcard({height:16,labels:1})
 $: gain("[0 1]*2.5").chord("<Dm9 Gm9>").voicing()
@@ -20,9 +18,7 @@ $: gain("[0 1]*2.5").chord("<Dm9 Gm9>").voicing()
     .add(note(saw.mul(2)))
     .struct("x*20")
     .dec(.1).delay(0))
-._pitchwheel()
 
-all(x=>x.color('cyan'))
 
 
 // @version 1.1`;
