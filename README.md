@@ -100,8 +100,12 @@ setBPM: set the bpm to a specific value
 
 
 
-### A link to your demonstration video.
-link
+### A link to demonstration video.
+(https://youtu.be/4X4nicomOrA)
+(If link doesn't work, file should be added to upload)
+
+### A link to github repository.
+(https://github.com/gurat002/Strudel_Reactor_WT_A1)
 
 ### Any song code used from the Strudel.cc bakery (or any other source)
     Stranger Tune: 
